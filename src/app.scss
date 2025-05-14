@@ -16,7 +16,7 @@
 }
 
 :global(body) {
-  font-family: 'Figtree', sans-serif;
+  font-family: Georgia, serif;
   position: relative;
 }
 
@@ -25,7 +25,7 @@
 // Global typography settings for headings and base text
 // ===================================================================
 :global(h1), :global(h2), :global(h3), :global(h4), :global(h5), :global(h6) {
-  font-family: 'Instrument Serif', serif;
+  font-family: Georgia, serif;
 }
 
 // ===================================================================
@@ -72,6 +72,7 @@
   font-size: 0.9rem;
   line-height: 1.4;
   color: #555;
+  font-family: Georgia, serif;
 }
 
 .chart-info {
@@ -145,7 +146,7 @@
 }
 
 .initial-state p {
-  font-family: 'Instrument Serif', serif;
+  font-family: Georgia, serif;
   font-size: 2rem;
   color: #333;
   text-align: center;
@@ -204,7 +205,7 @@
 .fullscreen-chapter h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  font-family: 'Instrument Serif', serif !important;
+  font-family: Georgia, serif !important;
   font-weight: 500;
 }
 
@@ -212,7 +213,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  font-family: 'Figtree', sans-serif;
+  font-family: Georgia, serif;
   font-weight: 400;
 }
 
@@ -222,10 +223,10 @@
 
 // ===================================================================
 // HEADER SECTION
-// Hero section with background image and title overlay
+// Hero section with background image (no overlay)
 // ===================================================================
 .header-image {
-  background-image: url('../src/TestExample/Images/placeholder-19201080.png');
+  background-image: url('../src/TestExample/Images/Menu Collage.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -235,37 +236,32 @@
   justify-content: center;
 }
 
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+// Title section below the header image
+.title-section {
+  background-color: #f9f9f9;
+  padding: 3rem 0;
+  text-align: center;
 }
 
-.header-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  max-width: 80%;
+.header-overlay {
+  display: none; // Remove overlay
 }
+
+// header-content no longer needed as title is below image
 
 .main-title {
-  font-family: 'Instrument Serif', serif !important;
-  font-size: 4rem;
+  font-family: Georgia, serif !important;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+  color: #333;
 }
 
 .sub-title {
-  font-family: 'Fira Sans', sans-serif !important;
-  font-size: 1.5rem;
+  font-family: Georgia, serif !important;
+  font-size: 1.3rem;
   font-weight: 400;
   margin-top: 0;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+  color: #555;
 }
 
 // ===================================================================
@@ -324,7 +320,7 @@
 }
 
 .content-paragraph {
-  font-family: 'Figtree', sans-serif;
+  font-family: Georgia, serif;
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0 0 1.25rem 0;
@@ -332,7 +328,7 @@
 
 // ===================================================================
 // IMAGE LAYOUT
-// Floated image with text wrapping
+// Floated image with text wrapping and centered images
 // ===================================================================
 .image-left {
   float: left;
@@ -344,6 +340,27 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.image-center {
+  width: 100%;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.image-center img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.75rem;
+  font-style: italic;
+  text-align: center;
 }
 
 .content-container::after {
@@ -437,14 +454,14 @@
 
 // ===================================================================
 // FOOTER STYLING
-// Site footer with distinctive monospace font
+// Site footer with Georgia font
 // ===================================================================
 .site-footer {
   background-color: #000;
   color: #fff;
   padding: 3.75rem 0;
   width: 100%;
-  font-family: 'Space Mono', monospace;
+  font-family: Georgia, serif;
 }
 
 .footer-container {
@@ -459,7 +476,7 @@
 }
 
 .footer-heading {
-  font-family: 'Space Mono', monospace;
+  font-family: Georgia, serif;
   font-size: 1.5rem;
   margin-bottom: 1.25rem;
   font-weight: 700;
@@ -470,6 +487,7 @@
   line-height: 1.6;
   margin-bottom: 0.625rem;
   font-weight: 400;
+  font-family: Georgia, serif;
 }
 
 .footer-links {
@@ -525,6 +543,10 @@
   .title-container h1 {
     font-size: 3rem;
   }
+  
+  .main-title {
+    font-size: 3.5rem;
+  }
 }
 
 @media (max-width: 64rem) { // 1024px
@@ -536,6 +558,10 @@
   :global(.left) {
     margin-left: calc(22.5% - 24.75rem) !important;
     width: 49.5rem !important;
+  }
+  
+  .main-title {
+    font-size: 3rem;
   }
 }
 
@@ -561,6 +587,10 @@
     font-size: 2.5rem;
     text-align: center;
   }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 48rem) { // 768px
@@ -573,7 +603,7 @@
   }
   
   .main-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .sub-title {
@@ -593,6 +623,10 @@
     padding-right: 0 !important;
     justify-content: center !important;
   }
+  
+  .content-container {
+    width: 90%;
+  }
 }
 
 @media (max-width: 30rem) { // 480px
@@ -602,5 +636,13 @@
   
   .title-container h1 {
     font-size: 1.8rem;
+  }
+  
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .sub-title {
+    font-size: 1rem;
   }
 }
