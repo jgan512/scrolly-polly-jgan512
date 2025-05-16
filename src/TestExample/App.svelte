@@ -3,9 +3,10 @@
 	// MAIN APPLICATION COMPONENT
 	// Configures and integrates scrollyteller with visualizations
 	// ===================================================================
+	// Remove chart imports - not needed anymore
 	import Scrollyteller, { loadScrollyteller } from '$lib/index.js';
-	import VegaChart from './VegaChart.svelte';
 	import ChineseTimelineComponent from './ChineseTimelineComponent.svelte';
+	import ChinesePronunciationInteractive from './ChinesePronunciationInteractive.svelte';
 	import { onMount } from 'svelte';
 
 	// Import chart specifications from JSON files
@@ -28,49 +29,6 @@
 	// App state
 	let number = 0; // Current section number
 	let stProgress; // Scrollyteller progress data
-	let currentSpec = null; // Current chart specification
-
-	// ===================================================================
-	// CHART METADATA
-	// Content information for each visualization section
-	// ===================================================================
-	const chartInfo = [
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
-			alignment: "left"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "center"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "right"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
-			alignment: "left"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
-			alignment: "center"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "right"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
-			alignment: "center"
-		}
-	];
 
 	// ===================================================================
 	// EVENT HANDLERS
@@ -80,7 +38,6 @@
 	// Handle marker changes (when user scrolls to a new section)
 	const onMarker = (marker) => {
 		number = marker.number;
-		updateVisualization(number);
 	};
 
 	// Track scrolling progress for animations
@@ -88,45 +45,9 @@
 		stProgress = progress;
 	};
 
-	// ===================================================================
-	// VISUALIZATION MANAGEMENT
-	// Update displayed content based on current section
-	// ===================================================================
-	
-	// Update the visualization based on the current marker number
-	function updateVisualization(markerNumber) {
-		// Select the appropriate chart specification for each section
-		switch (markerNumber) {
-			case 1:
-				currentSpec = chart01; // Chart visualization
-				break;
-			case 2:
-				currentSpec = null; // Full-screen image instead of chart
-				break;
-			case 3:
-				currentSpec = chart03; // Chart visualization
-				break;
-			case 4:
-				currentSpec = chart04; // Chart visualization
-				break;
-			case 5:
-				currentSpec = null; // Full-screen image instead of chart
-				break;
-			case 6:
-				currentSpec = chart06; // Chart visualization
-				break;
-			case 7:
-				currentSpec = chart07; // Chart visualization
-				break;
-			default:
-				currentSpec = null;
-				break;
-		}
-	}
-
-	// Initialize with first visualization on component mount
+	// Initialize when component mounts
 	onMount(() => {
-		updateVisualization(1);
+		// Component initialization if needed
 	});
 </script>
 
@@ -142,10 +63,14 @@
 <!-- 
 // ===================================================================
 // HEADER SECTION
-// Full-screen hero image without text overlay
+// Full-screen hero image with title overlay
 // ===================================================================
 -->
 <div class="fullscreen-chapter header-image">
+  <div class="header-overlay"></div>
+  <div class="header-content">
+    <h1 class="main-title">The Words We Eat...</h1>
+  </div>
 </div>
 
 <!-- 
@@ -155,8 +80,8 @@
 // ===================================================================
 -->
 <div class="title-section">
-	<h1 class="main-title">Decoding Menus: The Story of Asian Food Terms and What They Reveal</h1>
-	<h2 class="sub-title">Jennifer Gan</h2>
+  <h2 class="sub-title">Decoding Menus: The Story of Asian Food Terms and What They Reveal</h2>
+  <h3 class="byline">Jennifer Gan</h3>
 </div>
 
 <!-- 
@@ -177,10 +102,18 @@
 	<p class="content-paragraph">"How do you say this? La-ziji?" One of them asked, carefully trying to pronounce the term. "Just say spicy chicken," another shrugs. "I think they'll understand."</p>
 
 	<p class="content-paragraph">In the end, when the server came to take their order, the group played it safe and resorted to the universal language of pointing. "Can we have this, this, and this?" they said, tapping the menu and nodding as the server repeated the names in Mandarin to confirm.</p>
-
+<!-- Insert the image here before "New York City..." -->
+	<div class="image-center">
+		<img src="../src/TestExample/Images/menu example.jpg" alt="Menu Example Chart" />
+		<p class="image-caption">Menu Example: Sichuan Mountain House</p>
+	</div>
+	
 	<p class="content-paragraph">New York City is a linguistic mosaic, home to more than 800 languages. In neighborhoods like Flushing, Chinatown, and Koreatown, restaurant signs, grocery labels, and menus function as informal lessons in cultural adaptation. For those who are unfamiliar, these terms can feel like linguistic puzzles. But for the restaurant owners behind this trend, the decision to use "transliterated words" -- simplifying pronunciation instead of translation - has become a subtle yet powerful act of cultural preservation.</p>
 
 	<p class="content-paragraph">Unlike translation, which conveys the meaning of a word in another language, transliteration is derived solely from the pronunciation. This practice isn't new; early translators of the Bible introduced words like "baptism (baptizo)" into English by transliterating Greek sounds.</p>
+  
+  <!-- Add the interactive pronunciation component here -->
+  <ChinesePronunciationInteractive />
 
 	<p class="content-paragraph">Similarly, Arabic mathematical and scientific terms, such as "algebra" (al-jabr), entered. European languages through transliteration, shaping the development of modern science.</p>
 
@@ -206,6 +139,9 @@
 
 	<p class="content-paragraph">"There are nuances in the storytelling part, media doesn't give enough bandwidth to tell a normal story about China, even a food story," Zhao said.</p>
 
+	<!-- Timeline Component -->
+	<ChineseTimelineComponent />
+
 	<p class="content-paragraph">The transplantation of Chinese food to the United States first occurred in the mid-19th century during the California Gold Rush, as Chinese immigrants opened small eateries catering primarily to their own community members who had migrated to the region. By the late 1800s, Chinese food had become a staple in urban centers such as San Francisco and New York. In the decades since, dishes were often tailored to non-Chinese tastes, with recipes like chow mein, which were created to appeal to American preferences for simpler, sweeter flavors. Menu terms were commonly translated to make them accessible to American diners.</p>
 
 	<p class="content-paragraph">"They are very adaptable and accommodating. They had to come up with new dishes that appealed to their customers." Curtis Chin said, reflecting on how Chinese chefs succeeded in the U.S. because of their flexibility.</p>
@@ -217,10 +153,7 @@
 	<p class="content-paragraph">"You couldn't do that for other cuisines back then," Chin explained. "What that communicates is that Chinese restaurants really aimed to please, particularly in neighborhoods where there wasn't a large Asian population."</p>
 
 	<p class="content-paragraph">This adaptability also meant that Chinese menus offered a far greater variety of combinations and choices. With such an extensive selection, providing transliterations for every dish would be far more challenging than simply offering them for the most iconic items. Studies suggest that, under the ethnic procession theory, Chinese restaurateurs had to continuously reinvent and adapt their cuisine to gain acceptance in the American market. Unlike Italian or Japanese food, which has seamlessly entered the realm of high-end dining.</p>
-	
-	<!-- Timeline Component -->
-	<ChineseTimelineComponent />
-	
+
 	<p class="content-paragraph">Japanese cuisine's rise in the United States followed a different path. It gained prominence in the mid-20th century through sushi, which first appeared in Los Angeles in the late 1960s. The dish soon became the "it" food at luncheons and dinner parties.</p>
 
 	<p class="content-paragraph">Sushi's appeal was driven by its association with health, sophistication, and exclusivity, aligning with Japan's post-World War II emergence as a global economic power. By the 1980s, sushi bars became fashionable in cities like New York and Los Angeles, transforming the cuisine into a symbol of cosmopolitan dining.</p>
@@ -232,7 +165,7 @@
 	<!-- Insert the image here before "Chang recalls..." -->
 	<div class="image-center">
 		<img src="../src/TestExample/Images/Percentage of Transliteration.jpg" alt="Percentage of Transliteration Chart" />
-		<p class="image-caption">Percentage of transliteration in Asian restaurant menus</p>
+		<p class="image-caption">This illustration shows the percentage of transliterated terms found in a random sample of 30 menus from Japanese, Chinese, and Korean restaurants in New York City. The median percentage for each cuisine is used to represent the central tendency, reducing the influence of extreme values that may occur due to menu variations. Japanese menus have the highest percentage of transliterated terms, followed by Korean menus, while Chinese menus have the least. </p>
 	</div>
 
 	<p class="content-paragraph">Chang recalls the rise in the number of Japanese restaurants reaching out for promotion, a sign of how competitive the market remains. "Japanese food is definitely more elevated here in New York City, especially Omakase. It has been a huge trend and is still going," she said.</p>
@@ -258,7 +191,11 @@
 	<p class="content-paragraph">Once a term like bánh mì becomes widely recognized, it no longer requires translation to be understood. Similar to words like "chow mein" and "teriyaki," which Chin said are no longer just transliterations, have fully integrated into American English.</p>
 
 	<p class="content-paragraph">"Language evolves," he said. "Once Americans learn it and adapt it, they become an English word. Transliteration is just a process in which phonetic words become integrated into the dominant language."</p>
-
+<!-- Insert the image here before "All these words..." -->
+	<div class="image-center">
+		<img src="../src/TestExample/Images/WordEvolution.jpg" alt="Word Evolution Chart" />
+		<p class="image-caption">How Words Evolve</p>
+	</div>
 	<p class="content-paragraph">All of these words were originally foreign words that entered the lexicon in this exact process. This linguistic phenomenon is not new but part of a historical pattern. Terms like "sushi" and "kebab" have long become entrenched in English through repeated use and market appeal.</p>
 
 	<p class="content-paragraph">"Think about languages as a social network," Phan said. He described this as part of what historical linguists call multi-generational language change, where a word transitions from being niche to mainstream as it permeates various social networks and persists across generations.</p>
@@ -268,108 +205,6 @@
 	<p class="content-paragraph">Restaurant menus reveal more than just what's being served---they capture the values of their times and cultures.</p>
 </div>
 
-<!-- 
-// ===================================================================
-// SCROLLYTELLER COMPONENT
-// Main scrollytelling section with data visualizations
-// ===================================================================
--->
-<Scrollyteller
-	panels={scrollyData.panels}
-	{onMarker}
-	{onProgress}
->
-	<div class="graphic">
-		<div class="chart-container">
-			<!-- Render different content based on current section -->
-			{#if number === 1}
-				<!-- Section 1: Chart with left alignment -->
-				<VegaChart 
-					spec={chart01}
-					alignment={chartInfo[0].alignment} 
-				/>
-				
-				<div class="chart-info align-left">
-					<h3 class="chart-title">{chartInfo[0].title}</h3>
-					<p class="chart-description">{chartInfo[0].description}</p>
-				</div>
-			
-			{:else if number === 2}
-				<!-- Section 2: Full-screen image -->
-				<div class="fullscreen-image-container">
-					<img src="../src/TestExample/Images/placehold-19201080-orange.png" alt="Full screen placeholder" class="fullscreen-image" />
-				</div>
-			
-			{:else if number === 3}
-				<!-- Section 3: Chart with right alignment -->
-				<VegaChart 
-					spec={chart03}
-					alignment={chartInfo[2].alignment} 
-				/>
-				
-				<div class="chart-info align-right">
-					<h3 class="chart-title">{chartInfo[2].title}</h3>
-					<p class="chart-description">{chartInfo[2].description}</p>
-				</div>
-			
-			{:else if number === 4}
-				<!-- Section 4: Chart with left alignment -->
-				<VegaChart 
-					spec={chart04}
-					alignment={chartInfo[3].alignment} 
-				/>
-				
-				<div class="chart-info align-left">
-					<h3 class="chart-title">{chartInfo[3].title}</h3>
-					<p class="chart-description">{chartInfo[3].description}</p>
-				</div>
-			
-			{:else if number === 5}
-				<!-- Section 5: Full-screen image -->
-				<div class="fullscreen-image-container">
-					<img src="../src/TestExample/Images/placehold-19201080-blue.png" alt="Full screen placeholder" class="fullscreen-image" />
-				</div>
-			
-			{:else if number === 6}
-				<!-- Section 6: Chart with right alignment -->
-				<VegaChart 
-					spec={chart06}
-					alignment={chartInfo[5].alignment} 
-				/>
-				
-				<div class="chart-info align-right">
-					<h3 class="chart-title">{chartInfo[5].title}</h3>
-					<p class="chart-description">{chartInfo[5].description}</p>
-				</div>
-			
-			{:else if number === 7}
-				<!-- Section 7: Chart with center alignment -->
-				<VegaChart 
-					spec={chart07}
-					alignment={chartInfo[6].alignment} 
-				/>
-				
-				<div class="chart-info align-center">
-					<h3 class="chart-title">{chartInfo[6].title}</h3>
-					<p class="chart-description">{chartInfo[6].description}</p>
-				</div>
-			
-			{:else}
-				<!-- Default/Initial state before scrolling begins -->
-				<div class="initial-state">
-					<p>Scroll to begin the journey</p>
-				</div>
-			{/if}
-		</div>
-	</div>
-</Scrollyteller>
-
-<!-- 
-// ===================================================================
-// FOOTER SECTION
-// Site footer with contact links and additional information
-// ===================================================================
--->
 <footer class="site-footer">
 	<div class="footer-container">
 		<div class="footer-content">

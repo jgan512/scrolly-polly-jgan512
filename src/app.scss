@@ -13,11 +13,13 @@
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
   width: 100%;
+  background-color: #f1dbbd;
 }
 
 :global(body) {
   font-family: Georgia, serif;
   position: relative;
+  background-color: #f1dbbd;
 }
 
 // ===================================================================
@@ -32,75 +34,29 @@
 // GRAPHIC CONTAINER 
 // Main container for visualizations in scrollytelling sections
 // ===================================================================
+.scrolly-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1dbbd;
+}
+
 .graphic {
-  background-color: #f9f9f9;
-  height: 100%;
+  background-color: #f1dbbd;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   width: 100%;
-  display: flex;
   position: relative;
 }
 
-.number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 900;
-  font-size: 2rem;
-}
-
-// ===================================================================
-// CHART CONTAINER AND INFO
-// Styling for chart visualizations and explanatory text
-// ===================================================================
-.chart-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.chart-title {
-  margin: 0 0 0.625rem 0;
-  font-size: 1.4rem;
-  color: #333;
-}
-
-.chart-description {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #555;
-  font-family: Georgia, serif;
-}
-
-.chart-info {
-  position: absolute;
-  top: 3.125rem;
-  max-width: 21.875rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0.9375rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-// Alignment variations for chart info cards
-.chart-info.align-left {
-  left: 5%;
-  right: auto;
-}
-
-.chart-info.align-right {
-  right: 5%;
-  left: auto;
-}
-
-.chart-info.align-center {
-  left: 50%;
-  transform: translateX(-50%);
+// Remove chart related styles
+.chart-container, .chart-title, .chart-description, .chart-info,
+.chart-info.align-left, .chart-info.align-right, .chart-info.align-center,
+.fullscreen-image, .fullscreen-image-container {
+  display: none;
 }
 
 // ===================================================================
@@ -142,7 +98,10 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: #f9f9f9;
+  background-color: #f1dbbd;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .initial-state p {
@@ -221,10 +180,6 @@
   margin-bottom: 0.5rem;
 }
 
-// ===================================================================
-// HEADER SECTION
-// Hero section with background image (no overlay)
-// ===================================================================
 .header-image {
   background-image: url('../src/TestExample/Images/Menu Collage.jpg');
   background-size: cover;
@@ -234,33 +189,61 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-// Title section below the header image
-.title-section {
-  background-color: #f9f9f9;
-  padding: 3rem 0;
-  text-align: center;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  width: 100%;
 }
 
 .header-overlay {
-  display: none; // Remove overlay
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.header-content {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title-section {
+  background-color: #f1dbbd;
+  padding: 2rem 0;
+  text-align: center;
+  width: 100%;
 }
 
 // header-content no longer needed as title is below image
 
 .main-title {
   font-family: Georgia, serif !important;
-  font-size: 3.5rem;
+  font-size: 5rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .sub-title {
   font-family: Georgia, serif !important;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 400;
-  margin-top: 0;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.byline {
+  font-family: Georgia, serif !important;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
   color: #555;
 }
 
@@ -309,10 +292,11 @@
 // Standard content container for consistent layout
 // ===================================================================
 .content-container {
-  width: 80%;
-  max-width: 50rem;
-  margin: 3.75rem auto;
-  padding: 0 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 2rem 1.25rem;
+  background-color: #f1dbbd;
 }
 
 .fullscreen-chapter .content-container {
@@ -324,6 +308,9 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0 0 1.25rem 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // ===================================================================

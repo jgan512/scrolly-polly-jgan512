@@ -49,6 +49,7 @@ declare module '$env/static/private' {
 	export const npm_config_noproxy: string;
 	export const HUGO_ROOT: string;
 	export const HOME: string;
+	export const CODESPACE_VSCODE_WORKSPACE: string;
 	export const OLDPWD: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const ORYX_ENV_TYPE: string;
@@ -146,7 +147,6 @@ declare module '$env/static/private' {
 	export const NVS_OS: string;
 	export const PHP_PATH: string;
 	export const RAILS_DEVELOPMENT_HOSTS: string;
-	export const CODESPACE_VSCODE_FOLDER: string;
 	export const MAVEN_ROOT: string;
 	export const RUBY_HOME: string;
 	export const rvm_path: string;
@@ -208,6 +208,7 @@ declare module '$env/dynamic/private' {
 		npm_config_noproxy: string;
 		HUGO_ROOT: string;
 		HOME: string;
+		CODESPACE_VSCODE_WORKSPACE: string;
 		OLDPWD: string;
 		TERM_PROGRAM_VERSION: string;
 		ORYX_ENV_TYPE: string;
@@ -305,7 +306,6 @@ declare module '$env/dynamic/private' {
 		NVS_OS: string;
 		PHP_PATH: string;
 		RAILS_DEVELOPMENT_HOSTS: string;
-		CODESPACE_VSCODE_FOLDER: string;
 		MAVEN_ROOT: string;
 		RUBY_HOME: string;
 		rvm_path: string;

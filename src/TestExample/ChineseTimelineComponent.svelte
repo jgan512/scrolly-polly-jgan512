@@ -32,25 +32,13 @@
       image: "../src/TestExample/Images/1965.jpg"
     },
     {
-      year: "1967",
-      image: "../src/TestExample/Images/1967.jpg"
-    },
-    {
-      year: "1975",
-      image: "../src/TestExample/Images/1975.jpg"
-    },
-    {
       year: "1980",
       image: "../src/TestExample/Images/1980.jpg"
     },
     {
       year: "2000s",
-      image: "../src/TestExample/Images/2000s.jpg"
+      image: "../src/TestExample/Images/2010.jpg"
     },
-    {
-      year: "2025",
-      image: "../src/TestExample/Images/2025.jpg"
-    }
   ];
   
   let currentEvent = 0;
@@ -121,18 +109,17 @@
 <style>
   .timeline-section {
     width: 100%;
-    margin: 3rem 0;
+    margin: 0;
     background-color: #f1dbbd;
     padding: 2rem 0;
   }
   
   .timeline-wrapper {
     position: relative;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-    height: 675px; /* 16:9 ratio - 1200*9/16 = 675 */
-    aspect-ratio: 16/9;
+    height: 80vh; /* Fixed height using viewport height */
   }
   
   /* Timeline Navigation - Vertical on Left */
@@ -208,7 +195,7 @@
     scroll-behavior: smooth;
     position: relative;
     scrollbar-width: thin;
-    scrollbar-color: #c41230 #f1dbbd;
+    scrollbar-color: #333 #f1dbbd;
     background-color: #f1dbbd;
   }
   
@@ -232,13 +219,14 @@
   
   /* Timeline Events with Background Images */
   .timeline-event {
-    height: 675px; /* 16:9 ratio */
+    height: 100vh;
     position: relative;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     transition: opacity 0.5s ease;
     opacity: 0;
+    background-color: #f1dbbd;
   }
   
   .timeline-event.active {
