@@ -80,7 +80,6 @@ declare module '$env/static/private' {
 	export const PYTHON_PATH: string;
 	export const NVM_DIR: string;
 	export const DOTNET_SKIP_FIRST_TIME_EXPERIENCE: string;
-	export const FORCE_COLOR: string;
 	export const ContainerVersion: string;
 	export const GITHUB_API_URL: string;
 	export const NVS_HOME: string;
@@ -239,7 +238,6 @@ declare module '$env/dynamic/private' {
 		PYTHON_PATH: string;
 		NVM_DIR: string;
 		DOTNET_SKIP_FIRST_TIME_EXPERIENCE: string;
-		FORCE_COLOR: string;
 		ContainerVersion: string;
 		GITHUB_API_URL: string;
 		NVS_HOME: string;
